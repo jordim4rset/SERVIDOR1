@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name', 30);
             $table->integer('number');
             $table->integer('years');
+            $table->string('position');
             $table->string('twitter')->nullable();
             $table->string('instagram')->nullable();
             $table->string('twitch')->nullable();
