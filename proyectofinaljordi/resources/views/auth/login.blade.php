@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <form action="{{ route('singup') }}" method="POST">
+    <form action="{{ route('login') }}" method="POST">
         @csrf
         <label for="username">Nombre de Usuario:</label>
         <input type="text" name="username" id="username">

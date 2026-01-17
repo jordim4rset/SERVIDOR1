@@ -6,10 +6,6 @@
     <main>
         <h1 id="titulo">JUGADORES</h1>
 
-        @isadmin
-            hola
-        @endisadmin
-
         <div class="contenedor-jugadores">
             @forelse ($players as $player)
                 <div class="contenedor-jugador">

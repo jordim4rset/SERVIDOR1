@@ -7,6 +7,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MessageController;
+use Illuminate\Support\Facades\Auth;
 
 //INDEX
 Route::get('/', function () {
@@ -27,17 +28,41 @@ Route::get('/dondeEstamos', function(){
 Route::get('privacyPolice',[LegalController::class, 'privacyPolice'])->name('privacyPolice');
 Route::get('termsCondition',[LegalController::class, 'termsCondition'])->name('termsCondition');
 
-//PLAYERS
+//PLAYERS INDEX
+Route::get('/players', [PlayerController::class, 'index'])
+    ->name('players.index');
+
+//PLAYERS SHOW
+Route::get('/players/{player}', [PlayerController::class, 'show'])
+    ->name('players.show');
+
+//PLAYERS RESOURCE
 Route::resource('players', PlayerController::class)
     ->only(['create','store','edit','update','destroy'])
     ->middleware('isAdmin');
 
-//EVENTOS
+//EVENTOS INDEX
+Route::get('/events', [EventController::class, 'index'])
+    ->name('events.index');
+
+//EVENTOS SHOW
+Route::get('/events/{event}', [EventController::class, 'show'])
+->name('events.show');
+
+//EVENTOS RESOURCE
 Route::resource('events', EventController::class)
     ->only(['create','store','edit','update','destroy'])
     ->middleware('isAdmin');
 
-//MESAJES
+//MENSAJES INDEX
+Route::get('/messages', [MessageController::class, 'index'])
+    ->name('messages.index');
+
+//MENSAJES SHOW
+Route::get('/messages/{mesagges}', [MessageController::class, 'show'])
+    ->name('messages.show');
+
+//MENSAJES RESOURCE
 Route::resource('messages', MessageController::class)
     ->only(['create','store','edit','update','destroy'])
     ->middleware('isAdmin');
@@ -50,3 +75,4 @@ Route::post('login', [LoginController::class, 'login'])->name('login');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('UserAcount', [UserController::class, 'account'])->name('users.account');
+

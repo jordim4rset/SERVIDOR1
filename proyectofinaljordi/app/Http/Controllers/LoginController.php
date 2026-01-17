@@ -24,11 +24,13 @@ class LoginController extends Controller
         $user->username = $request->get('username');
         $user->name = $request->get('name');
         $user->email = $request->get('email');
-        $user->password = $request->get('password');
+        //$user->password = $request->get('password');
+        $user->password = Hash::make($request->password);
 
         $user->save();
 
         Auth::login($user);
+        $request->session()->regenerate();
 
         return redirect()->route('users.account');
     }
@@ -51,7 +53,7 @@ class LoginController extends Controller
     {
         $credentials = $request->only('username', 'password');
 
-        if(Auth::guard('web')->attempt($credentials))
+        if(Auth::attempt($credentials))
         {
             $request->session()->regenerate();
             return redirect()->route('users.account');
@@ -69,4 +71,5 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
         return redirect()->route('index');
     }
+
 }
