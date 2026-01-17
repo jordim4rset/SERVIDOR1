@@ -6,6 +6,10 @@
     <main>
         <h1 id="titulo">EVENTOS</h1>
 
+        @isadmin
+            <a href="{{ route('events.create') }}"><button>CREAR EVENTO</button></a>
+        @endisadmin
+
         @forelse ($events as $event)
             <div>
                 <a href="{{ route('events.show', ['event' => $event]) }}"><h2>{{ $event->name }}</h2></a>

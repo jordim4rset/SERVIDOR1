@@ -28,6 +28,11 @@ Route::get('/dondeEstamos', function(){
 Route::get('privacyPolice',[LegalController::class, 'privacyPolice'])->name('privacyPolice');
 Route::get('termsCondition',[LegalController::class, 'termsCondition'])->name('termsCondition');
 
+//PLAYERS ADMIN
+Route::resource('players', PlayerController::class)
+    ->only(['create','store','edit','update','destroy'])
+    ->middleware('isAdmin');
+
 //PLAYERS INDEX
 Route::get('/players', [PlayerController::class, 'index'])
     ->name('players.index');
@@ -36,8 +41,8 @@ Route::get('/players', [PlayerController::class, 'index'])
 Route::get('/players/{player}', [PlayerController::class, 'show'])
     ->name('players.show');
 
-//PLAYERS RESOURCE
-Route::resource('players', PlayerController::class)
+//EVENTOS RESOURCE
+Route::resource('events', EventController::class)
     ->only(['create','store','edit','update','destroy'])
     ->middleware('isAdmin');
 
@@ -49,8 +54,8 @@ Route::get('/events', [EventController::class, 'index'])
 Route::get('/events/{event}', [EventController::class, 'show'])
 ->name('events.show');
 
-//EVENTOS RESOURCE
-Route::resource('events', EventController::class)
+//MENSAJES RESOURCE
+Route::resource('messages', MessageController::class)
     ->only(['create','store','edit','update','destroy'])
     ->middleware('isAdmin');
 
@@ -61,11 +66,6 @@ Route::get('/messages', [MessageController::class, 'index'])
 //MENSAJES SHOW
 Route::get('/messages/{mesagges}', [MessageController::class, 'show'])
     ->name('messages.show');
-
-//MENSAJES RESOURCE
-Route::resource('messages', MessageController::class)
-    ->only(['create','store','edit','update','destroy'])
-    ->middleware('isAdmin');
 
 //LOGINS
 Route::get('singup', [LoginController::class, 'singupForm'])->name('singupForm');

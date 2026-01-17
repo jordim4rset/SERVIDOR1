@@ -14,8 +14,6 @@
         <a href={{route('shop')}}>TIENDA</a>
         <a href={{route('messages.create')}}>CONTACTO</a>
         <a href={{route('whereAreWe')}}>DONDE ESTAMOS</a>
-        <a href="{{ route('players.create') }}">CREAR JUGADOR</a>
-        <a href="{{ route('events.create') }}">CREAR EVENTO</a>
     </nav>
 </header>
 

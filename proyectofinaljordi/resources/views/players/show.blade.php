@@ -18,6 +18,7 @@
             @method('delete')
             <button type="submit">ELIMINAR</button>
         </form>
+        <a href="{{ route('players.edit', ['player' => $player->id]) }}"><button>EDITAR</button></a>
     </main>
 
 @endsection

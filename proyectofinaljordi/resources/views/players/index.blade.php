@@ -6,6 +6,10 @@
     <main>
         <h1 id="titulo">JUGADORES</h1>
 
+        @isadmin
+            <a href="{{ route('players.create') }}"><button>CREAR JUGADOR</button></a>
+        @endisadmin
+
         <div class="contenedor-jugadores">
             @forelse ($players as $player)
                 <div class="contenedor-jugador">
@@ -17,9 +21,6 @@
                     <p>{{ $player->twitch }}</p>
                     <p>{{ $player->photo }}</p>
                     <p>{{ $player->visible }}</p>
-                    <div>
-                        <a href="{{ route('players.edit', ['player' => $player->id]) }}"><button>EDITAR</button></a>
-                    </div>
                 </div>
             @empty
                 <h2>NO HAY JUGADORES</h2>
