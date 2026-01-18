@@ -59,10 +59,16 @@ nav a{
 
 main{
     flex: 1;
-    margin: auto auto;
     width: 100vw;
     height: 100vh;
     color: white;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 main h1{
