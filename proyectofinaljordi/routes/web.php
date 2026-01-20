@@ -56,12 +56,16 @@ Route::get('/events/{event}', [EventController::class, 'show'])
 
 //MENSAJES RESOURCE
 Route::resource('messages', MessageController::class)
-    ->only(['create','store','edit','update','destroy'])
+    ->only(['store','edit','update','destroy'])
     ->middleware('isAdmin');
 
 //MENSAJES INDEX
 Route::get('/messages', [MessageController::class, 'index'])
     ->name('messages.index');
+
+//MENSAJES CREATE
+Route::get('/messages/create', [MessageController::class, 'create'])
+    ->name('messages.create');
 
 //MENSAJES SHOW
 Route::get('/messages/{mesagges}', [MessageController::class, 'show'])

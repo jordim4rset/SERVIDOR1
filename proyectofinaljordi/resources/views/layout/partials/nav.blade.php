@@ -4,7 +4,14 @@
         <div id="titulo">
             <h1>NOTTHINGAM FOREST</h1>
         </div>
-        <a href="{{route('index')}}"><img src="/img/escudoBlanco.jpg" alt="Escudo Notthingam Forest" id="ocultar-logo"></a>
+        <div class="login-logout-singup">
+            @auth
+                <a href="{{route('logout')}}"><button>CERRAR SESIÓN</button></a>
+            @else
+                <a href="{{route('login')}}"><button>INICIAR SESIÓN</button></a>
+                <a href="{{route('singup')}}"><button>REGISTRARSE</button></a>
+            @endauth
+        </div>
 
     </div>
     <nav>

@@ -41,14 +41,14 @@ class EventController extends Controller
         $event->type = $request->input('type');
         $event->tags = $request->input('tags');
         if($request->input('visible') == 'on'){
-            $event->visible = 0;
-        }else {
             $event->visible = 1;
+        }else {
+            $event->visible = 0;
         }
 
         $event->save();
 
-        return redirect()->route('events.create', compact('event'));
+        return redirect()->route('events.create');
     }
 
     /**

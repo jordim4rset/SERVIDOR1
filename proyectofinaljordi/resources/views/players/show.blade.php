@@ -13,12 +13,14 @@
         <p>TWITCH: {{ $player->twitch }}</p>
         <p>FOTO: {{ $player->photo }}</p>
 
-        <form action="{{ route('players.destroy', ['player' => $player->id]) }}" method="POST">
-            @csrf
-            @method('delete')
-            <button type="submit">ELIMINAR</button>
-        </form>
-        <a href="{{ route('players.edit', ['player' => $player->id]) }}"><button>EDITAR</button></a>
+        @isadmin
+            <form action="{{ route('players.destroy', ['player' => $player->id]) }}" method="POST">
+                @csrf
+                @method('delete')
+                <button type="submit">ELIMINAR</button>
+            </form>
+            <a href="{{ route('players.edit', ['player' => $player->id]) }}"><button>EDITAR</button></a>
+        @endisadmin
     </main>
 
 @endsection

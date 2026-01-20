@@ -5,7 +5,7 @@
 @section('content')
     <main>
         <h1 id="titulo">CREAR EVENTO</h1>
-        <form action="{{ route('events.update') }}" method="POST">
+        <form action="{{ route('events.update', $event) }}" method="POST">
             @csrf
             @method('put')
 
@@ -34,7 +34,11 @@
             <input type="text" name="tags" id="tags" value="{{ $event->tags }}">
             <br>
             <label for="visible">VISIBILE:</label>
-            <input type="checkbox" name="visible" id="visible" value="{{ $event->visible }}">
+            @if($event->visible == 1)
+                <input type="checkbox" name="visible" id="visible" checked">
+            @else
+                <input type="checkbox" name="visible" id="visible">
+            @endif
             <br>
             <button type="submit">ACTUALIZAR</button>
         </form>

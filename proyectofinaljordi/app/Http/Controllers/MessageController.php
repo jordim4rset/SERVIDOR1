@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MessageRequest;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class MessageController extends Controller
@@ -22,7 +22,8 @@ class MessageController extends Controller
      */
     public function create()
     {
-        return view('message.create');
+        $user = Auth::user();
+        return view('message.create', compact('user'));
     }
 
     /**
